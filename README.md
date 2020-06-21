@@ -7,7 +7,7 @@ This repository is a POC (Proof of Concept) of the idea to have a catalog of com
 
 One method may have multiple versions wich the executors can select on runtime.
 
-* Method plugability
+## Method plugability
 
 A method my also have one or more plugin points to add extra bits of custom behaviour
 
