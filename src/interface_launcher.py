@@ -1,3 +1,4 @@
+import argparse
 from typing import Dict, Any
 from types import ModuleType
 from importlib import import_module
@@ -89,9 +90,30 @@ def launch_interface(execution_context: Dict, interface_args: Dict):
         if if_fn:
             if_logger.info(
                 f'Launching interface {if_name} with {len(valid_plugins)} valid plugins')
-            if_fn(ctx=ctx, **interface_args)
+            return if_fn(ctx=ctx, **interface_args)
         else:
             if_logger.error(f'Failed to resolve entrypoint for {if_name}!')
 
     else:
         if_logger.error(f'Invalid context!')
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser('POC Interface launcher')
+
+    parser.add_argument('-c', '--customer',
+                        help='Customer param', default='customer_1')
+
+    args, _ = parser.parse_known_args()
+
+    exec_ctx = {
+        'interface_name': 'interface_a',
+        'interface_version': 1,
+        'customer': args.customer
+    }
+
+    if_args = {'arg1': 2}
+
+    result = launch_interface(exec_ctx, if_args)
+
+    print(f'Launch result: {result}')
