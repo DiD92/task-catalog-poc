@@ -24,7 +24,7 @@ def interface_a_entrypoint_v1(ctx, arg1: int, **kwargs):
 
     plugin_found, result = cip(ctx, 0, param_a, param_b)
 
-    return result + arg1
+    return result + arg1 if plugin_found else arg1
 
 
 def interface_a_entrypoint_v2(ctx, arg1, **kwargs):
