@@ -112,7 +112,7 @@ if __name__ == "__main__":
         'customer': args.customer
     }
 
-    if_args = {'arg1': 2}
+    if_args = {'arg1': 2, 'arg2': 21}
 
     result = launch_interface(exec_ctx, if_args)
 
